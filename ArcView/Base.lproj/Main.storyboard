@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GO0-Nj-RvJ">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="pFj-Wt-GMP">
+            <objects>
+                <navigationController id="GO0-Nj-RvJ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tI5-Zc-r7S">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zJB-6K-6Sf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pxm-YM-YHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-717" y="104"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -26,20 +42,70 @@
                                     <constraint firstAttribute="height" constant="250" id="qkk-f2-zDJ"/>
                                 </constraints>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="287-yE-VFT">
+                                <rect key="frame" x="16" y="88" width="382" height="29"/>
+                                <segments>
+                                    <segment title="Start angle"/>
+                                    <segment title="End angle"/>
+                                    <segment title="Radius"/>
+                                    <segment title="Thickness"/>
+                                    <segment title="Color"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlValueChangedWithSender:" destination="BYZ-38-t0r" eventType="valueChanged" id="2R0-f0-oka"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o15-V5-Zh0">
+                                <rect key="frame" x="16" y="124" width="382" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                            </textField>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVP-Hg-ev5">
+                                <rect key="frame" x="16" y="124" width="382" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="a9T-xx-Odn"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rr2-7M-bVS"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="12x-Ho-JX1"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="NVP-Hg-ev5" firstAttribute="top" secondItem="287-yE-VFT" secondAttribute="bottom" constant="8" id="3QO-hK-AgL"/>
+                            <constraint firstItem="o15-V5-Zh0" firstAttribute="leading" secondItem="287-yE-VFT" secondAttribute="leading" id="7jZ-A8-XVr"/>
                             <constraint firstItem="3WD-vp-E95" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Lbm-Od-SLs"/>
                             <constraint firstItem="3WD-vp-E95" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bTP-Ye-a5u"/>
+                            <constraint firstItem="NVP-Hg-ev5" firstAttribute="trailing" secondItem="287-yE-VFT" secondAttribute="trailing" id="fUX-mz-kow"/>
+                            <constraint firstItem="o15-V5-Zh0" firstAttribute="top" secondItem="287-yE-VFT" secondAttribute="bottom" constant="8" id="fq0-vs-NdY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="287-yE-VFT" secondAttribute="trailing" constant="16" id="r2r-dn-5HG"/>
+                            <constraint firstItem="287-yE-VFT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rI7-KN-wR2"/>
+                            <constraint firstItem="o15-V5-Zh0" firstAttribute="trailing" secondItem="287-yE-VFT" secondAttribute="trailing" id="vMR-EQ-vhW"/>
+                            <constraint firstItem="287-yE-VFT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wPm-Le-TEu"/>
+                            <constraint firstItem="NVP-Hg-ev5" firstAttribute="leading" secondItem="287-yE-VFT" secondAttribute="leading" id="xE9-pv-NQd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="2u2-b7-NkJ">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Change" id="hjw-8j-fGE">
+                            <connections>
+                                <action selector="changeBarButtonItemTapWithSender:" destination="BYZ-38-t0r" id="j3A-kK-waM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="arcView" destination="3WD-vp-E95" id="6Gp-G5-kbb"/>
+                        <outlet property="changeBarButtonItem" destination="hjw-8j-fGE" id="vjJ-94-jnp"/>
+                        <outlet property="pickerView" destination="NVP-Hg-ev5" id="Ycd-xf-9D2"/>
+                        <outlet property="segmentedControl" destination="287-yE-VFT" id="Dqs-dl-DAc"/>
+                        <outlet property="textField" destination="o15-V5-Zh0" id="W3c-pQ-iGN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="103.79464285714285"/>
         </scene>
     </scenes>
 </document>
